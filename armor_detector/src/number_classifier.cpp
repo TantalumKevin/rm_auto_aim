@@ -123,8 +123,8 @@ void NumberClassifier::processOutput(
   auto output_blob_holder = output_blob->rmap();
   const float * output_blob_data = output_blob_holder.as<const float *>();
 
-  float max_confidence = 0.0;
   for (size_t batch_id = 0; batch_id < batch_size_; ++batch_id) {
+    float max_confidence = 0.0;
     auto & armor = armors[batch_id];
     for (size_t class_id = 0; class_id < class_num_; ++class_id) {
       auto confidence = output_blob_data[batch_id * class_num_ + class_id];
